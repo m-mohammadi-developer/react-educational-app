@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import {toast} from "react-toastify";
 
 const Register = props => {
     const [fullname, setFullname] = useState('');
@@ -23,9 +24,29 @@ const Register = props => {
 
         // send user to server
 
+        // console.log(JSON.stringify(user));
 
+        axios.post(
+            'http://localhost:4000/api/register',
+            JSON.stringify(user),
+            {
+                "headers": {
+                    'Content-Type': 'application/json',
+                }
+            }
+        )
+            .then(({data, status}) => {
+                console.log(data);
+                if (status === 201) {
+                    toast.success('کاربر با موفقیت ساخته شد', {position: 'top-right', closeOnClick: true});
+                    resetStates();
+                }
+            })
+            .catch(ex => {
+                toast.error('مشکلی پیش آمد', {position: 'top-right', closeOnClick: true});
+                console.log(ex)
+            });
 
-        resetStates();
 
     };
 
