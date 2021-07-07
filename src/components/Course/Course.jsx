@@ -1,11 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Course = props => {
     return (
         <section className="terms-items">
             <header>
                 <h2> آخرین دوره های تاپ لرن </h2>
-                <a href=""> مشاهده همه دوره ها </a>
+                <Link to="/archive"> مشاهده همه دوره ها </Link>
             </header>
             <div className="row">
                 <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col">
