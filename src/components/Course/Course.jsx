@@ -11,14 +11,14 @@ const Course = props => {
             <div className="row">
                 <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col">
                     <article>
-                        <a href="" className="img-layer">
+                        <Link to="/single" className="img-layer">
                             <img src="images/pic/1.jpg" />
-                        </a>
+                        </Link>
                         <h2>
-                            <a href="">
+                            <Link to="/single">
                                 {" "}
                                 آموزش متریال دیاین در زامارین{" "}
-                            </a>
+                            </Link>
                         </h2>
                         <span> رایگان </span>
                         <i>1:52:32</i>
@@ -27,14 +27,14 @@ const Course = props => {
 
                 <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col">
                     <article>
-                        <a href="" className="img-layer">
+                        <Link to="/single" className="img-layer">
                             <img src="images/pic/2.jpg" />
-                        </a>
+                        </Link>
                         <h2>
-                            <a href="">
+                            <Link to="/single">
                                 {" "}
                                 آموزش متریال دیاین در زامارین{" "}
-                            </a>
+                            </Link>
                         </h2>
                         <span> رایگان </span>
                         <i>1:52:32</i>
@@ -43,14 +43,14 @@ const Course = props => {
 
                 <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col">
                     <article>
-                        <a href="" className="img-layer">
+                        <Link to="/single" className="img-layer">
                             <img src="images/pic/3.jpg" />
-                        </a>
+                        </Link>
                         <h2>
-                            <a href="">
+                            <Link to="/single">
                                 {" "}
                                 آموزش متریال دیاین در زامارین{" "}
-                            </a>
+                            </Link>
                         </h2>
                         <span> 150.000 تومان </span>
                         <i>1:52:32</i>
@@ -59,14 +59,14 @@ const Course = props => {
 
                 <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col">
                     <article>
-                        <a href="" className="img-layer">
+                        <Link to="/single" className="img-layer">
                             <img src="images/pic/4.jpg" />
-                        </a>
+                        </Link>
                         <h2>
-                            <a href="">
+                            <Link to="/single">
                                 {" "}
                                 آموزش متریال دیاین در زامارین{" "}
-                            </a>
+                            </Link>
                         </h2>
                         <span> رایگان </span>
                         <i>1:52:32</i>
@@ -75,14 +75,14 @@ const Course = props => {
 
                 <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col">
                     <article>
-                        <a href="" className="img-layer">
+                        <Link to="/single" className="img-layer">
                             <img src="images/pic/5.jpg" />
-                        </a>
+                        </Link>
                         <h2>
-                            <a href="">
+                            <Link to="/single">
                                 {" "}
                                 آموزش متریال دیاین در زامارین{" "}
-                            </a>
+                            </Link>
                         </h2>
                         <span> 15.000 تومان </span>
                         <i>1:52:32</i>
@@ -91,14 +91,14 @@ const Course = props => {
 
                 <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col">
                     <article>
-                        <a href="" className="img-layer">
+                        <Link to="/single" className="img-layer">
                             <img src="images/pic/6.jpg" />
-                        </a>
+                        </Link>
                         <h2>
-                            <a href="">
+                            <Link to="/single">
                                 {" "}
                                 آموزش متریال دیاین در زامارین{" "}
-                            </a>
+                            </Link>
                         </h2>
                         <span> رایگان </span>
                         <i>1:52:32</i>
@@ -107,14 +107,14 @@ const Course = props => {
 
                 <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col">
                     <article>
-                        <a href="" className="img-layer">
+                        <Link to="/single" className="img-layer">
                             <img src="images/pic/7.jpg" />
-                        </a>
+                        </Link>
                         <h2>
-                            <a href="">
+                            <Link to="/single">
                                 {" "}
                                 آموزش متریال دیاین در زامارین{" "}
-                            </a>
+                            </Link>
                         </h2>
                         <span> 20.000 تومان </span>
                         <i>1:52:32</i>
@@ -123,14 +123,14 @@ const Course = props => {
 
                 <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col">
                     <article>
-                        <a href="" className="img-layer">
+                        <Link to="/single" className="img-layer">
                             <img src="images/pic/8.jpg" />
-                        </a>
+                        </Link>
                         <h2>
-                            <a href="">
+                            <Link to="/single">
                                 {" "}
                                 آموزش متریال دیاین در زامارین{" "}
-                            </a>
+                            </Link>
                         </h2>
                         <span> 75.000 تومان </span>
                         <i>1:52:32</i>

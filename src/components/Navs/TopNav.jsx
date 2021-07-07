@@ -1,7 +1,9 @@
 import React from "react";
-import {NavLink} from 'react-router-dom';
+import {NavLink, withRouter} from 'react-router-dom';
 
-const TopNav = () => {
+
+const TopNav = props => {
+    const { pathname } = props.location;
     return (
         <nav>
             <div className="row">
@@ -16,15 +18,19 @@ const TopNav = () => {
                 </div>
                 <div className="col-sm-6 col-xs-12">
                     <div className="clientarea">
-                        {/*<div className="loggein ">*/}
-                        {/*    <i className="zmdi zmdi-account"></i>*/}
-                        {/*    <a href=""> ایمان مدائنی ، خوش آمدی </a>*/}
-                        {/*</div>*/}
-                        <div className="signin">
-                            <i className="zmdi zmdi-account"></i>
-                            <NavLink to="/login" activeStyle={{color: "lime"}}> ورود </NavLink> /
-                            <NavLink to="/register" activeStyle={{color: "lime"}}> عضویت </NavLink>
-                        </div>
+
+                        {pathname == '/account' ?
+                            <div className="loggein ">
+                                <i className="zmdi zmdi-account"></i>
+                                <NavLink to="/account"> خوش آمدی </NavLink>
+                            </div>
+                            :
+                            <div className="signin">
+                                <i className="zmdi zmdi-account"></i>
+                                <NavLink to="/login" activeStyle={{color: "lime"}}> ورود </NavLink> /
+                                <NavLink to="/register" activeStyle={{color: "lime"}}> عضویت </NavLink>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -32,4 +38,4 @@ const TopNav = () => {
     );
 }
 
-export default TopNav;
+export default withRouter(TopNav);
