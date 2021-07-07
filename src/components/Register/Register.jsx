@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {toast} from "react-toastify";
+import {registerUser} from "../../services/userService";
 
 const Register = props => {
     const [fullname, setFullname] = useState('');
@@ -13,41 +14,23 @@ const Register = props => {
         setPassword('');
     };
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault();
-
         const user = {
             fullname,
             email,
             password
         };
-
         // send user to server
-
-        // console.log(JSON.stringify(user));
-
-        axios.post(
-            'http://localhost:4000/api/register',
-            JSON.stringify(user),
-            {
-                "headers": {
-                    'Content-Type': 'application/json',
-                }
+        try {
+            const {status} = await registerUser(user);
+            if (status === 201) {
+                toast.success('کاربر با موفقیت ساخته شد', {position: 'top-right', closeOnClick: true});
+                resetStates();
             }
-        )
-            .then(({data, status}) => {
-                console.log(data);
-                if (status === 201) {
-                    toast.success('کاربر با موفقیت ساخته شد', {position: 'top-right', closeOnClick: true});
-                    resetStates();
-                }
-            })
-            .catch(ex => {
-                toast.error('مشکلی پیش آمد', {position: 'top-right', closeOnClick: true});
-                console.log(ex)
-            });
-
-
+        } catch (ex) {
+            toast.error('مشکلی پیش آمد', {position: 'top-right', closeOnClick: true});
+        }
     };
 
 
