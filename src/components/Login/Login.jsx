@@ -1,6 +1,39 @@
-import React from "react";
+import React, {useState} from "react";
+import {withRouter} from 'react-router-dom';
+import {loginUser} from "../../services/userService";
+import {toast} from "react-toastify";
 
-const Login = () => {
+
+const Login = ({ history }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const resetStates = () => {
+        setEmail('');
+        setPassword('');
+    };
+
+    const handleSubmit = async event => {
+        event.preventDefault();
+        const user = {email, password};
+        try {
+            const {status, data} = await loginUser(user);
+            if (status === 200) {
+                toast.success('ورود موفقیت آمیز بود', {position: 'top-right', closeOnClick: true});
+                console.log(data);
+                localStorage.setItem('token', data.token);
+                history.replace('/');
+                resetStates();
+            }
+
+        } catch (ex) {
+            toast.error('مشکلی پیش آمد', {position: 'top-right', closeOnClick: true});
+            console.log(ex);
+        }
+
+
+
+    };
 
     return (
         <main className="client-page">
@@ -10,20 +43,32 @@ const Login = () => {
 
                 <div className="form-layer">
 
-                    <form action="" method="">
+                    <form onSubmit={handleSubmit}>
 
                         <div className="input-group">
                             <span className="input-group-addon" id="email-address">
                                 <i className="zmdi zmdi-email"></i>
                             </span>
-                            <input type="text" className="form-control" placeholder="ایمیل"
-                                   aria-describedby="email-address"/>
+                            <input
+                                type="email"
+                                className="form-control"
+                                placeholder="ایمیل"
+                                aria-describedby="email-address"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                            />
                         </div>
 
                         <div className="input-group">
                             <span className="input-group-addon" id="password"><i className="zmdi zmdi-lock"></i></span>
-                            <input type="text" className="form-control" placeholder="رمز عبور "
-                                   aria-describedby="password"/>
+                            <input
+                                type="password"
+                                className="form-control"
+                                placeholder="رمز عبور "
+                                aria-describedby="password"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                            />
                         </div>
 
                         <div className="remember-me">
@@ -45,4 +90,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default withRouter(Login);
