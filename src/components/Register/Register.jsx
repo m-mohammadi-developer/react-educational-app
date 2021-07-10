@@ -3,12 +3,15 @@ import SimpleReactValidator from "simple-react-validator";
 import axios from 'axios';
 import {toast} from "react-toastify";
 import {registerUser} from "../../services/userService";
+import {Sugar} from "react-preloaders";
 
-const Register = props => {
+const Register = ({history}) => {
     const [fullname, setFullname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [policy, setPolicy] = useState();
+    const [loading, setLoading] = useState(false);
+
 
     const [, forceUpdate] = useState();
     const validator = useRef(new SimpleReactValidator({
@@ -39,14 +42,18 @@ const Register = props => {
         // send user to server
         try {
             if (validator.current.allValid()) {
+                setLoading(true);
                 const {status} = await registerUser(user);
                 if (status === 201) {
                     toast.success('کاربر با موفقیت ساخته شد', {position: 'top-right', closeOnClick: true});
                     resetStates();
+                    history.push('/login');
                 }
+                setLoading(false);
             } else {
                 validator.current.showMessages();
                 forceUpdate(1);
+                setLoading(false);
             }
 
         } catch (ex) {
@@ -61,6 +68,9 @@ const Register = props => {
             <div className="container-content">
 
                 <header><h2> عضویت در سایت </h2></header>
+
+                {loading ? (<Sugar time={0.1} color="#fc03d7" customLoading={loading} />) : null}
+
 
                 <div className="form-layer">
 
