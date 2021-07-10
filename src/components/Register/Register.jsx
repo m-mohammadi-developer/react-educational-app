@@ -1,9 +1,10 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import SimpleReactValidator from "simple-react-validator";
 import axios from 'axios';
 import {toast} from "react-toastify";
 import {registerUser} from "../../services/userService";
 import {Sugar} from "react-preloaders";
+import {Helmet} from "react-helmet";
 
 const Register = ({history}) => {
     const [fullname, setFullname] = useState('');
@@ -23,6 +24,15 @@ const Register = ({history}) => {
         element: message => <div style={{color: 'red'}}>{message}</div>
     }));
 
+
+    useEffect(() => {
+        document.title = 'عضویت در سایت';
+    }, []);
+
+
+
+
+
     const resetStates = () => {
         setFullname('');
         setEmail('');
@@ -36,9 +46,6 @@ const Register = ({history}) => {
             email,
             password
         };
-        // validate data
-
-
         // send user to server
         try {
             if (validator.current.allValid()) {
