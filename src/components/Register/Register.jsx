@@ -30,6 +30,7 @@ const Register = props => {
             }
         } catch (ex) {
             toast.error('مشکلی پیش آمد', {position: 'top-right', closeOnClick: true});
+            console.log(ex);
         }
     };
 
