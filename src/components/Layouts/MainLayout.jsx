@@ -5,12 +5,17 @@ import TopNav from "../Navs/TopNav";
 import Header from "../common/Header";
 import MainNav from "../Navs/MainNav";
 import Footer from "../common/Footer";
+import {Helmet} from "react-helmet";
 
 const MainLayout = props => {
     const { pathname } = props.location;
 
     return (
         <Fragment>
+            <Helmet>
+                <title>تاپ لرن</title>
+            </Helmet>
+
             <div className="landing-layer">
                 <div className="container">
 

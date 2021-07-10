@@ -4,6 +4,7 @@ import {loginUser} from "../../services/userService";
 import {toast} from "react-toastify";
 import SimpleReactValidator from "simple-react-validator";
 import {Sugar} from 'react-preloaders';
+import {Helmet} from "react-helmet";
 
 
 
@@ -56,6 +57,10 @@ const Login = ({ history }) => {
     return (
         <main className="client-page">
             <div className="container-content">
+
+                <Helmet>
+                    <title>ورود به تاپ لرن</title>
+                </Helmet>
 
                 <header><h2> ورود به سایت </h2></header>
 

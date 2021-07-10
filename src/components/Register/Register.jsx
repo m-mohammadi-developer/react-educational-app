@@ -25,10 +25,6 @@ const Register = ({history}) => {
     }));
 
 
-    useEffect(() => {
-        document.title = 'عضویت در سایت';
-    }, []);
-
 
 
 
@@ -73,6 +69,14 @@ const Register = ({history}) => {
     return (
         <main className="client-page">
             <div className="container-content">
+
+                <Helmet>
+                    <title>عضویت در سایت تاپ لرن</title>
+                </Helmet>
+
+
+
+
 
                 <header><h2> عضویت در سایت </h2></header>
 
