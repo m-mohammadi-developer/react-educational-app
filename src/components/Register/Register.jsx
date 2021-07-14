@@ -74,14 +74,9 @@ const Register = ({history}) => {
                     <title>عضویت در سایت تاپ لرن</title>
                 </Helmet>
 
-
-
-
-
                 <header><h2> عضویت در سایت </h2></header>
 
-                {loading ? (<Sugar time={0.1} color="#fc03d7" customLoading={loading} />) : null}
-
+                <Sugar time={0.1} color="#fc03d7" customLoading={loading} />
 
                 <div className="form-layer">
 

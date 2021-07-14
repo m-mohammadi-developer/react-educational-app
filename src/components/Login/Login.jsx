@@ -64,7 +64,7 @@ const Login = ({ history }) => {
 
                 <header><h2> ورود به سایت </h2></header>
 
-                {loading ? (<Sugar time={0.1} color="#fc03d7" customLoading={loading} />) : null}
+                <Sugar time={0.1} color="#fc03d7" customLoading={loading} />
 
                 <div className="form-layer">
 

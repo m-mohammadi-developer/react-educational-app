@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 $(function(){
 
     $('.main-menu nav > span').click(function(){
@@ -6,7 +8,7 @@ $(function(){
 
 });
 
-$(document).load($(window).bind("resize", checkPosition));
+$(window).bind("resize", checkPosition);
 
 function checkPosition() {
     if (window.matchMedia('(max-width: 991px)').matches) {
