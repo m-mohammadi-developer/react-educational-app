@@ -8,9 +8,15 @@ import Register from "../components/Register/Register";
 import Archive from "../components/Course/Archive";
 import Account from "../components/User/Acount";
 import Single from "../components/Course/Single";
+import {useSelector} from "react-redux";
+import {paginate} from "../utils/paginate";
 
 
 const Toplearn = props => {
+    const courses = useSelector(state => state.courses);
+
+    const indexCourses = paginate(courses, 1, 8);
+
     return (
         <MainLayout >
             <Switch>
@@ -19,7 +25,7 @@ const Toplearn = props => {
                 <Route path="/archive" component={Archive}/>
                 <Route path="/account" component={Account}/>
                 <Route path="/single" component={Single}/>
-                <Route path="/" exact component={Course}/>
+                <Route path="/" exact render={() => <Course courses={indexCourses} />}/>
             </Switch>
         </MainLayout>
     );
