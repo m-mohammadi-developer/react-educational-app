@@ -1,25 +1,29 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {getSingleCourse} from "../../actions/course";
 
-const Single = props => {
+const Single = ({match}) => {
+    const course = useSelector(state => state.course);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getSingleCourse(match.params.id));
+        console.log(match);
+    }, []);
+
     return (
         <section className="term-content">
-            <header><h1> دوره آموزشی ساخت ربات تلگرام </h1></header>
+            <header><h1>{course.title}</h1></header>
             <div className="row">
 
                 <div className="col-md-8 col-sm-12 col-xs-12 pull-left">
                     <section className="term-description">
-                        <img src="images/pic/big-thumb.jpg"/>
+                        <img src={`https://toplearnapi.ghorbany.dev/${course.imageUrl}`}/>
+
 
                         <h2> ربات تلگرام برای چه کاری مفید است ؟ </h2>
                         <p>
-                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                            است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط
-                            فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای
-                            زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با
-                            نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو
-                            در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه
-                            راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و
-                            جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+                            {course.info}
                         </p>
 
                         <h2> سرفصل های این دوره : </h2>
@@ -72,7 +76,7 @@ const Single = props => {
                                                 </div>
                                             </div>
                                             <div className="col-md-4 col-sm-5 col-xs-5">
-                                                <img src="images/captcha.jpg"/>
+                                                <img src="../images/captcha.jpg"/>
                                             </div>
                                         </div>
                                     </div>
@@ -85,7 +89,7 @@ const Single = props => {
                             <div className="comment-list">
 
                                 <div className="comment-row">
-                                    <img src="images/pic/avatar.jpg"/>
+                                    <img src="../images/pic/avatar.jpg"/>
                                     <div className="left-col">
                                         <h3> میترا رحیمی </h3>
                                         <span>12/03/1397</span>
@@ -99,7 +103,7 @@ const Single = props => {
 
 
                                 <div className="comment-row">
-                                    <img src="images/pic/avatar.jpg"/>
+                                    <img src="../images/pic/avatar.jpg"/>
                                     <div className="left-col">
                                         <h3> میترا رحیمی </h3>
                                         <span>12/03/1397</span>
@@ -113,7 +117,7 @@ const Single = props => {
 
 
                                 <div className="comment-row">
-                                    <img src="images/pic/avatar.jpg"/>
+                                    <img src="../images/pic/avatar.jpg"/>
                                     <div className="left-col">
                                         <h3> میترا رحیمی </h3>
                                         <span>12/03/1397</span>
@@ -127,21 +131,7 @@ const Single = props => {
 
 
                                 <div className="comment-row">
-                                    <img src="images/pic/avatar.jpg"/>
-                                    <div className="left-col">
-                                        <h3> میترا رحیمی </h3>
-                                        <span>12/03/1397</span>
-                                        <p>
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                            از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-                                            سطرآنچنان که لازم است
-                                        </p>
-                                    </div>
-                                </div>
-
-
-                                <div className="comment-row">
-                                    <img src="images/pic/avatar.jpg"/>
+                                    <img src="../images/pic/avatar.jpg"/>
                                     <div className="left-col">
                                         <h3> میترا رحیمی </h3>
                                         <span>12/03/1397</span>
@@ -200,7 +190,7 @@ const Single = props => {
                     </div>
 
                     <article className="teacher-info">
-                        <img src="images/pic/avatar.jpg"/>
+                        <img src="../images/pic/avatar.jpg"/>
                         <h2> مدرس : ایمان مدائنی </h2>
                         <p>
                             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک

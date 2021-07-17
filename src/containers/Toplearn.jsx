@@ -14,7 +14,6 @@ import {paginate} from "../utils/paginate";
 
 const Toplearn = props => {
     const courses = useSelector(state => state.courses);
-
     const indexCourses = paginate(courses, 1, 8);
 
     return (
@@ -24,7 +23,7 @@ const Toplearn = props => {
                 <Route path="/register" component={Register}/>
                 <Route path="/archive" component={Archive}/>
                 <Route path="/account" component={Account}/>
-                <Route path="/single" component={Single}/>
+                <Route path="/course/:id" component={Single}/>
                 <Route path="/" exact render={() => <Course courses={indexCourses} />}/>
             </Switch>
         </MainLayout>

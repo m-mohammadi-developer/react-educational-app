@@ -13,7 +13,7 @@ const Course = ({courses}) => {
                     <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 term-col" key={course._id}>
                     <article>
                         <Link to={`/course/${course._id}`} className="img-layer">
-                            <img src={`https://toplearnapi.ghorbany.dev/${course.imageUrl}`} />
+                            <img src={`https://toplearnapi.ghorbany.dev/${course.imageUrl}`} width="180px" height="180px" />
                         </Link>
                         <h2>
                             <Link to={`/course/${course._id}`}>
