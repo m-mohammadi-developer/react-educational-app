@@ -5,6 +5,9 @@ import {toast} from "react-toastify";
 import SimpleReactValidator from "simple-react-validator";
 import {Sugar} from 'react-preloaders';
 import {Helmet} from "react-helmet";
+import {useDispatch} from "react-redux";
+import {addUser} from "../../actions/user";
+import {decodeToken} from "../../utils/decodeToken";
 
 
 
@@ -13,6 +16,7 @@ const Login = ({ history }) => {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
+    const dispatch = useDispatch();
 
     const resetStates = () => {
         setEmail('');
@@ -39,6 +43,7 @@ const Login = ({ history }) => {
                 if (status === 200) {
                     toast.success('ورود موفقیت آمیز بود', {position: 'top-right', closeOnClick: true});
                     localStorage.setItem('token', data.token);
+                    dispatch(addUser(decodeToken(data.token).payload.user));
                     setLoading(false);
                     history.replace('/account');
                     resetStates();
