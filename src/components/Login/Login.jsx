@@ -5,9 +5,11 @@ import {toast} from "react-toastify";
 import SimpleReactValidator from "simple-react-validator";
 import {Sugar} from 'react-preloaders';
 import {Helmet} from "react-helmet";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addUser} from "../../actions/user";
 import {decodeToken} from "../../utils/decodeToken";
+import {isEmpty} from "lodash";
+import {Redirect} from "react-router";
 
 
 
@@ -15,7 +17,6 @@ const Login = ({ history }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-
     const dispatch = useDispatch();
 
     const resetStates = () => {
@@ -45,7 +46,7 @@ const Login = ({ history }) => {
                     localStorage.setItem('token', data.token);
                     dispatch(addUser(decodeToken(data.token).payload.user));
                     setLoading(false);
-                    history.replace('/account');
+                    history.replace('/profile');
                     resetStates();
                 }
             } else {
@@ -58,6 +59,12 @@ const Login = ({ history }) => {
             console.log(ex);
         }
     };
+
+    const user = useSelector(state => state.user);
+
+    if (!isEmpty(user)) {
+        return <Redirect to="/" />
+    }
 
     return (
         <main className="client-page">

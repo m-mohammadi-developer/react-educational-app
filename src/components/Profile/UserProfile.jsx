@@ -1,6 +1,16 @@
 import React from "react";
+import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
+import {isEmpty} from "lodash";
+import {Redirect} from "react-router";
 
-const Account = props => {
+const UserProfile = props => {
+
+    const user = useSelector(state => state.user);
+
+    if (isEmpty(user)) {
+        return <Redirect to="/login" />
+    }
 
     return (
         <div className="user-account">
@@ -14,7 +24,7 @@ const Account = props => {
                                 <img src="images/pic/avatar.jpg"/>
                             </div>
                             <div className="detail">
-                                <span> ایمان مدائنی </span>
+                                <span>{user.fullname}</span>
                                 <span> عضویت : 01/01/1395 </span>
                             </div>
                         </div>
@@ -23,11 +33,9 @@ const Account = props => {
                             <header><h3> میز کار </h3></header>
                             <div className="inner">
                                 <ul>
-                                    <li><a href=""> مشاهده حساب کابری </a></li>
-                                    <li><a href=""> ویرایش حساب کابری </a></li>
-                                    <li><a href=""> تغییر رمز عبور </a></li>
-                                    <li><a href=""> تنظیمات حساب کاربری </a></li>
-                                    <li><a href=""> خروج از حساب کاربری </a></li>
+                                    <li>
+                                        <Link to="/profile"> خروج از حساب کاربری </Link>
+                                    </li>
                                 </ul>
                             </div>
                         </section>
@@ -40,11 +48,8 @@ const Account = props => {
                             <div className="account-information">
                                 <h3> اطلاعات کاربری </h3>
                                 <ul>
-                                    <li><i className="zmdi zmdi-account"></i> نام و نام خانوادگی : ایمان مدائنی</li>
-                                    <li><i className="zmdi zmdi-assignment-account"></i> نام کاربری : imadmadaeni</li>
-                                    <li><i className="zmdi zmdi-email"></i> ایمیل : imadmadaeni@gmail.com</li>
-                                    <li><i className="zmdi zmdi-calendar-check"></i> تاریخ عضویت : 01/01/1395</li>
-                                    <li><i className="zmdi zmdi-smartphone-android"></i> شماره تماس : 0912000000</li>
+                                    <li><i className="zmdi zmdi-account"></i> نام و نام خانوادگی : {user.fullname}</li>
+                                    <li><i className="zmdi zmdi-email"></i> ایمیل : {user.email}</li>
                                 </ul>
                             </div>
                         </div>
@@ -57,4 +62,4 @@ const Account = props => {
 
 }
 
-export default Account;
+export default UserProfile;

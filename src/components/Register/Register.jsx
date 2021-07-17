@@ -5,6 +5,9 @@ import {toast} from "react-toastify";
 import {registerUser} from "../../services/userService";
 import {Sugar} from "react-preloaders";
 import {Helmet} from "react-helmet";
+import {useSelector} from "react-redux";
+import {isEmpty} from "lodash";
+import {Redirect} from "react-router";
 
 const Register = ({history}) => {
     const [fullname, setFullname] = useState('');
@@ -64,6 +67,12 @@ const Register = ({history}) => {
             console.log(ex);
         }
     };
+
+    const user = useSelector(state => state.user);
+
+    if (!isEmpty(user)) {
+        return <Redirect to="/profile" />
+    }
 
 
     return (

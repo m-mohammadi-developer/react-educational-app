@@ -25,7 +25,7 @@ const TopNav = props => {
                         {!isEmpty(user) ?
                             <div className="loggein ">
                                 <i className="zmdi zmdi-account"></i>
-                                <NavLink to="/account">{user.fullname}</NavLink>
+                                <NavLink to="/profile">{user.fullname}</NavLink>
                                 {"  "}
                                 /
                                 {"  "}
